@@ -3,219 +3,251 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Akhil & Pooja | 3 Months</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Akhil & Pooja | 3 Months of Magic</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;400;600&family=Playfair+Display:italic,700&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
         :root {
-            --rose: #ff758c;
-            --deep-red: #d63031;
-            --glass: rgba(255, 255, 255, 0.9);
+            --rose-gradient: linear-gradient(45deg, #ff758c 0%, #ff7eb3 100%);
+            --deep-love: #d63031;
+            --white-glass: rgba(255, 255, 255, 0.88);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none; /* Custom heart cursor */
         }
 
         body {
-            margin: 0;
             font-family: 'Montserrat', sans-serif;
-            background: #ff758c; /* Fallback */
-            background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
-            color: #333;
+            background: #ffeef2;
             overflow-x: hidden;
-            min-height: 100vh;
+            color: #444;
         }
 
-        /* Fixed Background for Hearts - High Z-Index for Visibility but behind content */
-        #heart-container {
+        /* Custom Heart Cursor */
+        #cursor-heart {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: var(--deep-love);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease;
+        }
+
+        /* Background Animation */
+        .bg-layer {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 1; /* Behind content but visible */
-            pointer-events: none;
+            background: var(--rose-gradient);
+            z-index: -2;
+        }
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
         }
 
         /* Hero Section */
         .hero {
             height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            position: relative;
-            z-index: 10; /* Above hearts */
+            color: white;
         }
 
-        .hero-content h1 {
+        .hero h1 {
             font-family: 'Dancing Script', cursive;
-            font-size: clamp(3rem, 10vw, 5.5rem);
-            color: white;
+            font-size: clamp(3.5rem, 12vw, 7rem);
             margin: 0;
-            text-shadow: 2px 4px 15px rgba(0,0,0,0.2);
-            animation: heartbeat 1.5s infinite;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
-        @keyframes heartbeat {
-            0% { transform: scale(1); }
-            15% { transform: scale(1.05); }
-            30% { transform: scale(1); }
-            45% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+        .hero p {
+            font-size: 1.2rem;
+            letter-spacing: 5px;
+            font-weight: 300;
+            margin-top: 20px;
+            opacity: 0.9;
         }
 
-        .hero-content p {
-            font-size: 1.1rem;
-            color: white;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            margin-top: 10px;
-        }
-
-        /* Main Wrapper */
-        .main-wrapper {
-            position: relative;
-            z-index: 20; /* Ensures content is always on top */
-            padding-bottom: 100px;
-        }
-
+        /* Content Styles */
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 20px 100px;
         }
 
-        .glass-card {
-            background: var(--glass);
-            backdrop-filter: blur(8px);
-            padding: 40px;
-            border-radius: 25px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-            margin-bottom: 60px;
-            border: 1px solid rgba(255,255,255,0.4);
+        .card {
+            background: var(--white-glass);
+            backdrop-filter: blur(15px);
+            border-radius: 40px;
+            padding: 50px;
+            margin-bottom: 80px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .section-header {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--deep-love);
+            margin-bottom: 30px;
             text-align: center;
         }
 
-        .section-title {
+        /* New Floating Words Style */
+        .word-bubble {
+            display: inline-block;
+            background: white;
+            padding: 10px 20px;
+            border-radius: 50px;
+            margin: 10px;
+            box-shadow: 0 5px 15px rgba(255, 117, 140, 0.2);
+            color: #ff758c;
+            font-weight: 600;
+            transition: 0.4s;
+        }
+
+        .word-bubble:hover {
+            transform: translateY(-10px);
+            background: #ff758c;
+            color: white;
+        }
+
+        /* Love Letter Text */
+        .letter-content {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 2;
+            font-size: 1.15rem;
+            text-align: justify;
+        }
+
+        .sig {
+            margin-top: 30px;
             font-family: 'Dancing Script', cursive;
-            font-size: 2.8rem;
-            color: var(--deep-red);
-            margin-bottom: 25px;
+            font-size: 2.5rem;
+            color: var(--deep-love);
+            text-align: right;
         }
 
-        /* Timeline Items */
-        .milestone {
-            margin: 20px 0;
-            padding: 15px;
-            border-bottom: 1px dashed var(--rose);
-        }
-
-        .milestone:last-child { border: none; }
-
-        .milestone h3 { color: var(--rose); margin-bottom: 10px; }
-
-        /* Floating Animation for Hearts */
-        .floating-heart {
+        /* Floating Hearts */
+        .heart-particle {
             position: absolute;
-            bottom: -50px;
-            color: rgba(255, 255, 255, 0.7);
-            user-select: none;
-            animation: moveHearts linear infinite;
+            color: rgba(255, 255, 255, 0.4);
+            animation: floatUp linear infinite;
         }
 
-        @keyframes moveHearts {
+        @keyframes floatUp {
             0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-            10% { opacity: 0.8; }
-            90% { opacity: 0.8; }
-            100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+            20% { opacity: 0.6; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
         }
 
         footer {
             text-align: center;
             color: white;
-            padding: 20px;
-            font-size: 0.9rem;
+            padding: 50px;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
         }
     </style>
 </head>
 <body>
 
-    <div id="heart-container"></div>
+    <div id="cursor-heart"></div>
+    <div class="bg-layer"></div>
+    <div id="heart-box"></div>
 
-    <section class="hero">
-        <div class="hero-content" data-aos="zoom-in">
-            <h1>Akhil & Pooja</h1>
-            <p>90 Days of Happiness</p>
-            <span style="font-size: 2rem;">❤️</span>
-        </div>
+    <section class="hero" data-aos="zoom-out" data-aos-duration="2000">
+        <h1>Akhil & Pooja</h1>
+        <p>A QUARTER OF A YEAR. A LIFETIME OF LOVE.</p>
+        <div style="font-size: 3rem; margin-top: 30px;">♾️</div>
     </section>
 
-    <div class="main-wrapper">
-        <div class="container">
-            
-            <div class="glass-card" data-aos="fade-up">
-                <h2 class="section-title">Our 3 Month Chapter</h2>
-                <div class="milestone">
-                    <h3>Month One</h3>
-                    <p>The magic began. Every "Hello" felt like a melody and every conversation made me realize how special you are.</p>
-                </div>
-                <div class="milestone">
-                    <h3>Month Two</h3>
-                    <p>We grew closer, sharing our worlds and realizing that "Us" is my favorite place to be.</p>
-                </div>
-                <div class="milestone">
-                    <h3>Month Three</h3>
-                    <p>90 days later, and I'm still falling for you every single day. Happy Anniversary, Vahali!</p>
-                </div>
-            </div>
-
-            <div class="glass-card" data-aos="fade-up">
-                <h2 class="section-title">Dearest Pooja,</h2>
-                <p style="line-height: 1.8; font-style: italic; font-size: 1.1rem;">
-                    "To my Vahali, thank you for these incredible three months. You have filled my life with so much laughter and love. Whether we are talking for hours or just sharing a quiet moment, everything is better with you by my side. I can't wait to see what the next 3 months, and the next 30 years, have in store for us!"
-                </p>
-                <p style="margin-top: 20px; font-weight: 600; color: var(--rose);">Forever Yours, Akhil</p>
-            </div>
-
-        </div>
+    <div class="container">
         
-        <footer>
-            Created for my Vahali | 2026
-        </footer>
+        <div class="card" data-aos="fade-up">
+            <h2 class="section-header">Our Vibe</h2>
+            <div style="text-align: center;">
+                <span class="word-bubble">Trust</span>
+                <span class="word-bubble">Laughter</span>
+                <span class="word-bubble">Late Night Talks</span>
+                <span class="word-bubble">Vahali</span>
+                <span class="word-bubble">Future</span>
+                <span class="word-bubble">Growth</span>
+                <span class="word-bubble">Us</span>
+            </div>
+        </div>
+
+        <div class="card" data-aos="fade-right">
+            <h2 class="section-header">Three Months of Us</h2>
+            <div class="letter-content">
+                <p><strong>Month 1:</strong> They say first impressions are everything, but for me, every impression of you is better than the last. We started as a spark, and within 30 days, you became my favorite thought.</p>
+                <br>
+                <p><strong>Month 2:</strong> This was the month of deep connection. We moved past the "getting to know you" and started building "us." Every call, every message, and every moment shared became a brick in the foundation of what we have now.</p>
+                <br>
+                <p><strong>Month 3:</strong> Here we are at 90 days. You aren't just a part of my life; you are the peace in my chaos. You are my "Vahali"—the one who makes my heart feel at home.</p>
+            </div>
+        </div>
+
+        <div class="card" data-aos="fade-left">
+            <h2 class="section-header">A Message for Pooja</h2>
+            <div class="letter-content">
+                "Pooja, if I could give you one thing in life, I would give you the ability to see yourself through my eyes. Only then would you realize how truly special you are to me. Three months is just the prologue to a book I want to write with you forever. Thank you for choosing me, for staying by me, and for being the beautiful soul that you are."
+            </div>
+            <div class="sig">Forever Yours, Akhil</div>
+        </div>
+
     </div>
+
+    <footer>
+        HAPPY 3 MONTH ANNIVERSARY | 2026
+    </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true });
+        AOS.init({ duration: 1500 });
 
-        // Fixed Heart Creation Logic
-        const container = document.getElementById('heart-container');
-        const heartIcons = ['❤️', '💖', '💗', '💕'];
+        // Heart Cursor Logic
+        const cursor = document.getElementById('cursor-heart');
+        document.addEventListener('mousemove', e => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        // Enhanced Floating Hearts
+        const heartBox = document.getElementById('heart-box');
+        const emojis = ['❤️', '💖', '✨', '🌸', '💍'];
 
         function createHeart() {
             const heart = document.createElement('div');
-            heart.classList.add('floating-heart');
-            
-            // Randomize heart type
-            heart.innerText = heartIcons[Math.floor(Math.random() * heartIcons.length)];
-            
-            // Randomize position and size
-            heart.style.left = Math.random() * 100 + "vw";
-            heart.style.fontSize = Math.random() * 20 + 15 + "px";
-            
-            // Randomize speed
-            const duration = Math.random() * 3 + 4;
-            heart.style.animationDuration = duration + "s";
-            
-            container.appendChild(heart);
+            heart.className = 'heart-particle';
+            heart.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = '100vh';
+            heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+            heart.style.animationDuration = Math.random() * 3 + 5 + 's';
+            heartBox.appendChild(heart);
 
-            // Clean up
-            setTimeout(() => {
-                heart.remove();
-            }, duration * 1000);
+            setTimeout(() => { heart.remove(); }, 8000);
         }
 
-        // Start creating hearts
-        setInterval(createHeart, 400);
+        setInterval(createHeart, 300);
     </script>
 </body>
 </html>
